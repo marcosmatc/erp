@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.company.erp.core.mapper.TemplateMapper">
+
+    <resultMap id="TemplatesGroupResultMap" type="TemplatesGroup">
+
+        <id column="templateGroupId" property="id" />
+        <result column="templateGroupDesc" property="description" />
+        <collection property='templateList'
+                    javaType="ArrayList"
+                    ofType='Template'
+                    column="groupid"
+                    resultMap='TemplateResultMap'></collection>
+
+    </resultMap>
+
+    <resultMap id="TemplateResultMap" type="Template">
+        <id column="tempId" property="id" />
+        <result column="tempDescription" property="description" />
+        <result column="groupId" property="groupId" />
+        <result column="parenttemplateid" property="parentTemplateId" />
+    </resultMap>
+
+    <select id="getTemplateList" resultMap="TemplateResultMap">
+
+        select   t.templateid tempId,
+               t.description tempDescription,
+               t.groupid groupId,
+               t.parenttemplateid
+        FROM TEMPLATE t
+
+    </select>
+
+    <select id="getTemplatesGroupList" resultMap="TemplatesGroupResultMap">
+
+      SELECT TG.description templateGroupDesc,
+               TG.id templateGroupId,
+               t.templateid tempId,
+               t.description tempDescription,
+               t.groupid groupId,
+               t.parenttemplateid
+        FROM templates_group TG
+        JOIN template t on TG.id = t.groupid
+
+    </select>
+
+</mapper>

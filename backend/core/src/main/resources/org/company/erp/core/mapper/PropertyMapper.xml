@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.company.erp.core.mapper.PropertyMapper">
+
+    <resultMap id="PropertyResultMap" type="Property">
+        <id column="propertyid" property="propertyId" />
+        <result column="formula" property="formula" />
+        <result column="name" property="name" />
+        <result column="required" property="required" />
+    </resultMap>
+
+    <select id="getPropertyList" resultMap="PropertyResultMap">
+
+        select   p.propertyid,
+               p.formula,
+               p.name,
+               p.required
+        FROM property p
+
+    </select>
+
+    <select id="getProperty" parameterType="java.lang.String" resultType="Property">
+
+        select   p.propertyid,
+               p.formula,
+               p.name,
+               p.required
+        FROM property p
+        where p.name = #{name}
+
+    </select>
+
+
+</mapper>
