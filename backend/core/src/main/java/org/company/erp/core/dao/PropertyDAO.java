@@ -8,5 +8,9 @@ public interface PropertyDAO {
 
     List<Property> getPropertyList();
 
+    List<Property> getPropertiesByTemplate(Long templateId);
+
+    List<Property> getNotLinkedPropertiesByTemplate (Long templateId);
+
     Property getProperty(String name);
 }

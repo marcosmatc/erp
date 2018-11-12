@@ -20,6 +20,16 @@ public class PropertyDAOImpl implements PropertyDAO {
     }
 
     @Override
+    public List<Property> getPropertiesByTemplate(Long templateId) {
+        return propertyMapper.getPropertiesByTemplate(templateId);
+    }
+
+    @Override
+    public List<Property> getNotLinkedPropertiesByTemplate(Long templateId) {
+        return propertyMapper.getNotLinkedPropertiesByTemplate(templateId);
+    }
+
+    @Override
     public Property getProperty(String name) {
         return propertyMapper.getProperty(name);
     }

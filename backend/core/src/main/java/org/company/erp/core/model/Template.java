@@ -1,6 +1,10 @@
 package org.company.erp.core.model;
 
-public class Template {
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.io.Serializable;
+
+public class Template implements Serializable {
     private long id;
     private long groupId;
     private String description;

@@ -20,6 +20,16 @@ public class PropertyServiceImpl implements PropertyService {
     }
 
     @Override
+    public List<Property> getPropertiesByTemplate(Long templateId) {
+        return propertyDAO.getPropertiesByTemplate(templateId);
+    }
+
+    @Override
+    public List<Property> getNotLinkedPropertiesByTemplate(Long templateId) {
+        return propertyDAO.getNotLinkedPropertiesByTemplate(templateId);
+    }
+
+    @Override
     public Property getProperty(String name) {
         return propertyDAO.getProperty(name);
     }

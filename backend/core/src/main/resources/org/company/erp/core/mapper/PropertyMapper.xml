@@ -10,6 +10,7 @@
         <result column="formula" property="formula" />
         <result column="name" property="name" />
         <result column="required" property="required" />
+        <result column="type" property="type" />
     </resultMap>
 
     <select id="getPropertyList" resultMap="PropertyResultMap">
@@ -17,7 +18,8 @@
         select   p.propertyid,
                p.formula,
                p.name,
-               p.required
+               p.required,
+               p.type
         FROM property p
 
     </select>
@@ -27,11 +29,42 @@
         select   p.propertyid,
                p.formula,
                p.name,
-               p.required
+               p.required,
+               p.type
         FROM property p
         where p.name = #{name}
 
     </select>
+
+    <select id="getPropertiesByTemplate" parameterType="java.lang.Long" resultMap="PropertyResultMap">
+
+        select   p.propertyid,
+               p.formula,
+               p.name,
+               p.required,
+               p.type
+        FROM property p
+        JOIN templates_properties tp on tp.propertyid = p.propertyid
+        where tp.templateid  = #{templateId}
+
+    </select>
+
+    <select id="getNotLinkedPropertiesByTemplate"  parameterType="java.lang.Long" resultMap="PropertyResultMap">
+
+        select   p.propertyid,
+        p.formula,
+        p.name,
+        p.required,
+        p.type
+        FROM property p
+        WHERE not exists (select * from templates_properties tp
+                          where tp.templateid = #{templateId}
+                            AND tp.propertyid = p.propertyid)
+
+    </select>
+
+
+
 
 
 </mapper>

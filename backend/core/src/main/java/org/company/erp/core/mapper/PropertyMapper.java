@@ -9,5 +9,9 @@ import java.util.List;
 public interface PropertyMapper {
     List<Property> getPropertyList();
 
+    List<Property> getPropertiesByTemplate(Long templateId);
+
+    List<Property> getNotLinkedPropertiesByTemplate(Long templateId);
+
     Property getProperty(String name);
 }

@@ -5,7 +5,7 @@ public class Property {
     private String name;
     private String formula;
     private Boolean required;
-
+    private String type;
 
     public Long getPropertyId() {
         return propertyId;
@@ -37,5 +37,13 @@ public class Property {
 
     public void setRequired(Boolean required) {
         this.required = required;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

@@ -24,4 +24,9 @@ public class TemplateDAOImpl implements TemplateDAO {
     public List<TemplatesGroup> getTemplatesGroupList() {
         return templateMapper.getTemplatesGroupList();
     }
+
+    @Override
+    public List<Template> getTemplateListByGroup(long groupId) {
+        return templateMapper.getTemplateListByGroup(groupId);
+    }
 }

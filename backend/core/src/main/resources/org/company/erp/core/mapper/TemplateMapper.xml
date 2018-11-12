@@ -47,4 +47,17 @@
 
     </select>
 
+    <select id="getTemplateListByGroup" parameterType="java.lang.Long" resultType="Template">
+
+        select t.templateid id,
+               t.description description,
+               t.groupid groupId,
+               t.parenttemplateid parenttemplateid
+        FROM template t
+        where t.groupid = #{groupId}
+
+    </select>
+
+
+
 </mapper>

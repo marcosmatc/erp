@@ -8,4 +8,5 @@ import java.util.List;
 public interface TemplateService {
     List<TemplatesGroup> getTemplatesGroupList();
     List<Template> getTemplateList();
+    List<Template> getTemplateListByGroup(long groupId);
 }

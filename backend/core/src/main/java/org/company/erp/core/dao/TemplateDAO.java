@@ -9,4 +9,6 @@ public interface TemplateDAO {
     List<Template> getTemplateList();
 
     List<TemplatesGroup> getTemplatesGroupList();
+
+    List<Template> getTemplateListByGroup(long groupId);
 }

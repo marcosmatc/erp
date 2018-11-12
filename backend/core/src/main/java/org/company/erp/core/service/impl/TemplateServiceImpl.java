@@ -23,4 +23,9 @@ public class TemplateServiceImpl implements TemplateService {
     public List<Template> getTemplateList() {
         return templateDAO.getTemplateList();
     }
+
+    @Override
+    public List<Template> getTemplateListByGroup(long groupId) {
+        return templateDAO.getTemplateListByGroup(groupId);
+    }
 }
